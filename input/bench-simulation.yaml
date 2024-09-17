@@ -1,0 +1,5 @@
+iny:
+  cmd: src/bench-automata-simulation $1 iny
+
+simlib-rt:
+  cmd: src/bench-automata-simulation $1 forward
