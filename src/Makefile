@@ -7,7 +7,7 @@ NAME2=testing-simulation
 
 LINK=utils/utils.cc
 
-.PHONY: all
+.PHONY: all clean
 
 all: $(NAME1) $(NAME2)
 
@@ -16,3 +16,6 @@ $(NAME1): $(NAME1).cc
 
 $(NAME2): $(NAME2).cc
 	$(CC) $(CFLAGS) $(NAME2).cc $(LINK) -o $(NAME2) $(LDFLAGS)
+
+clean:
+	rm bench-automata-simulation testing-simulation
