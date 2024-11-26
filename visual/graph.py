@@ -18,6 +18,10 @@ rt_win = 0
 iny_priemer = 0
 rt_priemer = 0
 
+if (len(sys.argv) != 3):
+    print("graph.py vertical_bench horizontal_bench")
+    sys.exit()
+
 csvfile = open('../results/result_iny.csv', 'r')
 csvfile2 = open('../results/result_rt.csv', 'r')
 plots = csv.reader(csvfile, delimiter = ';')
@@ -49,6 +53,7 @@ for row in plots2:
 #    y.append(float(row[3]))
 
 if (count_x != count_y):
+    print("exiting")
     sys.exit()
 
 for i in range(0, count_x):
@@ -75,8 +80,8 @@ iny_stddev = statistics.stdev(x)
 rt_stddev = statistics.stdev(y)
 
 data = [
-    {"Algorithm": "iny", "Max": max_x, "Min": min_x, "Median": iny_median, "Stddev": iny_stddev, "Mean": iny_priemer, "Wins": iny_win },
-    {"Algorithm": "simlib_rt", "Max": max_y, "Min": min_y, "Median": rt_median, "Stddev": rt_stddev, "Mean": rt_priemer, "Wins": rt_win }
+    {"Algorithm": sys.argv[1], "Max": max_x, "Min": min_x, "Median": iny_median, "Stddev": iny_stddev, "Mean": iny_priemer, "Wins": iny_win },
+    {"Algorithm": sys.argv[2], "Max": max_y, "Min": min_y, "Median": rt_median, "Stddev": rt_stddev, "Mean": rt_priemer, "Wins": rt_win }
 ]
 
 table = tabulate.tabulate(data,headers = "keys", tablefmt="pipe",colalign=("left", "center", "right"),missingval = "N/A")
@@ -85,8 +90,8 @@ table = tabulate.tabulate(data,headers = "keys", tablefmt="pipe",colalign=("left
 print(table)
 
 plt.scatter(x, y, color = 'g',s = 50)
-plt.xlabel('iny') 
-plt.ylabel('simlib-rt') 
+plt.xlabel(sys.argv[1]) 
+plt.ylabel(sys.argv[2]) 
 plt.xscale("log") 
 plt.yscale("log") 
 plt.title('Sim Scatter plot', fontsize = 20) 

@@ -51,5 +51,15 @@ int main(int argc, char *argv[])
         }
     }
 
+    for (int i = 0; i < aut.delta.num_of_states(); i++){
+        for (int j = 0; j < aut.delta.num_of_states(); j++){
+        if (forward.get(i, j) != iny.get(i,j)){
+            std::cerr << "Position is wrong";
+            return EXIT_FAILURE;
+        }
+
+        } 
+    } 
+
     return EXIT_SUCCESS;
 }
