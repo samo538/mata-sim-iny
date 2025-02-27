@@ -1,6 +1,8 @@
 # mata-sim-eval
 Evaluation enviroment for simulation algorithm implemented in libmata (https://github.com/VeriFIT/mata)
 
+The simulation algorithm can be found at https://link.springer.com/chapter/10.1007/978-3-540-27812-2_11
+
 # Installation
 Firstly, benchmarks need to be compiled:
 ```
